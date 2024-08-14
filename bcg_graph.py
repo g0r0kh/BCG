@@ -36,17 +36,6 @@ for i in range(len(data.x)):
     else:
         continue
 
-# text_mkb = MKB.name_short
-
-
-# label mkb
-
-# text_mkb = MKB.name_short
-# #
-# for ii in range(len(MKB.x)):
-#     ax.annotate(text_mkb[ii], (x_mkb[ii], y_mkb[ii]))
-
-
 
 
 ax.grid()
