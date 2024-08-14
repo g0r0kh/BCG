@@ -28,11 +28,13 @@ ax.legend(sorted(set(data.Метка)))
 # label
 x = data.x
 y = data.y
-text_atx = data.name_short
+text = data.name_short
 
 for i in range(len(data.x)):
-    ax.annotate(text_atx[i], (x[i], y[i]))
-
+    if text[i] != 'empty':
+        ax.annotate(text[i], (x[i], y[i]))
+    else:
+        continue
 
 # text_mkb = MKB.name_short
 
