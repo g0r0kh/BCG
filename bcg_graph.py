@@ -25,12 +25,17 @@ ax.scatter(x_mkb, y_mkb, 200, alpha=0.5)
 # legend
 ax.legend(sorted(set(data.Метка)))
 
-# label atx
+# label
+x = data.x
+y = data.y
+text_atx = data.name_short
 
-text_atx = ATX.name_short
+for i in range(len(data.x)):
+    ax.annotate(text_atx[i], (x[i], y[i]))
 
-for i in range(len(ATX.x)):
-    ax.annotate(text_atx[i], (x_atx[i], y_atx[i]))
+
+# text_mkb = MKB.name_short
+
 
 # label mkb
 
