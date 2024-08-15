@@ -3,17 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 from bcg import data
 
-data1 = data[data['year']  != '2019']
-sort_list = sorted(set(data1['period']))
+sort_list = sorted(set(data['period']))
 
 
 plt.ion()
 for i in sort_list:
-    a = data1[data1['period'] == i]
+    a = data[data['period'] == i]
 
     plt.clf()
     plt.grid()
-    # legend
 
     # figure name
     plt.suptitle('BCG, Pharmacy market, ATC vs ICD - 10, Ipsos: 2019-2022')
@@ -23,6 +21,9 @@ for i in sort_list:
 
     # data point params
     scatter = plt.scatter(a.x, a.y, s=a.x * 10, c=a.color, alpha=0.5)
+    # legend
+    # plt.legend(handles=scatter.legend_elements()[0], labels=classes)
+
     # plt.draw()
     plt.gcf().canvas.flush_events()
 
@@ -31,11 +32,11 @@ for i in sort_list:
 
 
 # # label
-#     for ii in range(len(data.x)):
-#         if data.name_short[ii] != 'empty':
-#             plt.annotate(data.name_short[ii], (data.x[ii], data.y[ii]))
-#         else:
-#             continue
+# for ii in range(len(data.x)):
+#     if data.name_short[ii] != 'empty':
+#         plt.annotate(data.name_short[ii], (data.x[ii], data.y[ii]))
+#     else:
+#         continue
 # # label sample
 # legend=[str(year) for year in df['year'].unique()]
 # plt.title('Battery Capicity kwh')
@@ -52,3 +53,6 @@ plt.ioff()
 
 
 plt.show()
+
+
+
