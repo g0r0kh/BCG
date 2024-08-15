@@ -14,12 +14,10 @@ sort_list = sorted(set(data['period']))
 plt.ion()
 for i in sort_list:
     a = data[data['period'] == i]
+    # fig = plt.figure(figsize=(10, 10))
     plt.clf()
-    fig = plt.figure(figsize=(10, 10))
-
-
-
-    ax = fig.add_subplot()
+    # fig = plt.figure(figsize=(10, 10))
+    # ax = fig.add_subplot()
     # axes name
     #     plt.gca().set(xlim=(0.0, data.x.quantile(0.95)), ylim=(data.y.quantile(0.05), data.y.quantile(0.95)),
     #                   xlabel='market share, %', ylabel='evolution, %')
@@ -27,11 +25,11 @@ for i in sort_list:
     plt.gca().set(xlim=(0.0, 30.0), ylim=(-30, 30),
                   xlabel='market share, %', ylabel='evolution, %')
 
-    ax.scatter(a.x, a.y, s=a.x * 5, c=a.color, alpha=0.5)
+    plt.scatter(a.x, a.y, s=a.x * 5, c=a.color, alpha=0.5)
     # plt.draw()
     plt.gcf().canvas.flush_events()
 
-    time.sleep(0.04)
+    time.sleep(0.27)
 
 # legend
 # ax.legend(sorted(set(data.Метка)))
