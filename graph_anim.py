@@ -3,44 +3,52 @@ import numpy as np
 import matplotlib.pyplot as plt
 from bcg import data
 
-# fig = plt.figure(figsize=(10, 10))
-# ax = fig.add_subplot()
+data1 = data[data['year']  != '2019']
+sort_list = sorted(set(data1['period']))
 
-# figure name
-# fig.suptitle('BCG, Pharmacy market, ATX vs MKB, Ipsos: 2019-2022')
-
-sort_list = sorted(set(data['period']))
 
 plt.ion()
 for i in sort_list:
-    a = data[data['period'] == i]
-    # fig = plt.figure(figsize=(10, 10))
+    a = data1[data1['period'] == i]
+
     plt.clf()
-    # fig = plt.figure(figsize=(10, 10))
-    # ax = fig.add_subplot()
-    # axes name
-    #     plt.gca().set(xlim=(0.0, data.x.quantile(0.95)), ylim=(data.y.quantile(0.05), data.y.quantile(0.95)),
-    #                   xlabel='market share, %', ylabel='evolution, %')
+    plt.grid()
+    # legend
 
-    plt.gca().set(xlim=(0.0, 30.0), ylim=(-30, 30),
-                  xlabel='market share, %', ylabel='evolution, %')
+    # figure name
+    plt.suptitle('BCG, Pharmacy market, ATC vs ICD - 10, Ipsos: 2019-2022')
+    # axes name axes limits
+    plt.gca().set(xlim=(0.0, a.x.quantile(0.95)), ylim=(a.y.quantile(0.05), a.y.quantile(0.75)),
+                    xlabel='market share, %', ylabel='evolution, %')
 
-    plt.scatter(a.x, a.y, s=a.x * 5, c=a.color, alpha=0.5)
+    # data point params
+    scatter = plt.scatter(a.x, a.y, s=a.x * 10, c=a.color, alpha=0.5)
     # plt.draw()
     plt.gcf().canvas.flush_events()
 
-    time.sleep(0.27)
+    time.sleep(0.19)
 
-# legend
-# ax.legend(sorted(set(data.Метка)))
 
-# label
+
+# # label
 #     for ii in range(len(data.x)):
 #         if data.name_short[ii] != 'empty':
-#             ax.annotate(data.name_short[ii], (data.x[ii], data.y[ii]))
+#             plt.annotate(data.name_short[ii], (data.x[ii], data.y[ii]))
 #         else:
 #             continue
+# # label sample
+# legend=[str(year) for year in df['year'].unique()]
+# plt.title('Battery Capicity kwh')
+# result = plt.scatter('Approx_Release_price_order_in_K$','Battery_Capacity_kWh',data=df,c='year',label='Class 1')
+# plt.ylabel('kwh')
+# plt.xlabel('K$')
+# plt.legend(handles=result.legend_elements()[0],
+#        labels=legend,
+#        title="Year")
+# print('The higher priced evs have more battery capacity')
+
+
 plt.ioff()
 
-# ax.grid()
+
 plt.show()
