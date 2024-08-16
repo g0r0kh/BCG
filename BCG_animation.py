@@ -1,16 +1,15 @@
 import time
-import numpy as np
 import matplotlib.pyplot as plt
-from bcg import data, data_cut
+from bcg import data_cut
 
 sort_list = sorted(set(data_cut['period']))
 
 plt.ion()
 
 plt.figure(figsize=(9, 9))
-# plt.figtext(10, 10, 'Text window', fontsize=24, color='r')
+
 for i in sort_list:
-    a = data[data['period'] == i]
+    a = data_cut[data_cut['period'] == i]
     a = a.reset_index()
     plt.clf()
     plt.grid()
