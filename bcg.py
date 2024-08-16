@@ -10,6 +10,8 @@ data = pd.read_excel('source/agency_market_data_.xlsx',
 data['period'] = data['year'].astype(str) + data['quart'].astype(str)
 data['color'] = np.where(data.Метка == 'ATX', 'g', 'b')
 
+# cut base period
+data_cut = data[data['year'] != 19]
 
 
 
